@@ -9,6 +9,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Auth - Mytems</title>
   <link rel="icon" href="favicon.ico"><link href="assets/style_login.css" rel="stylesheet"><script data-cfasync="false" nonce="815e7e62-abe5-4061-8533-aeab00dd5d44">try{(function(w,d){!function(j,k,l,m){if(j.zaraz)console.error("zaraz is loaded twice");else{j[l]=j[l]||{};j[l].executed=[];j.zaraz={deferred:[],listeners:[]};j.zaraz._v="5874";j.zaraz._n="815e7e62-abe5-4061-8533-aeab00dd5d44";j.zaraz.q=[];j.zaraz._f=function(n){return async function(){var o=Array.prototype.slice.call(arguments);j.zaraz.q.push({m:n,a:o})}};for(const p of["track","set","debug"])j.zaraz[p]=j.zaraz._f(p);j.zaraz.init=()=>{var q=k.getElementsByTagName(m)[0],r=k.createElement(m),s=k.getElementsByTagName("title")[0];s&&(j[l].t=k.getElementsByTagName("title")[0].text);j[l].x=Math.random();j[l].w=j.screen.width;j[l].h=j.screen.height;j[l].j=j.innerHeight;j[l].e=j.innerWidth;j[l].l=j.location.href;j[l].r=k.referrer;j[l].k=j.screen.colorDepth;j[l].n=k.characterSet;j[l].o=(new Date).getTimezoneOffset();if(j.dataLayer)for(const t of Object.entries(Object.entries(dataLayer).reduce((u,v)=>({...u[1],...v[1]}),{})))zaraz.set(t[0],t[1],{scope:"page"});j[l].q=[];for(;j.zaraz.q.length;){const w=j.zaraz.q.shift();j[l].q.push(w)}r.defer=!0;for(const x of[localStorage,sessionStorage])Object.keys(x||{}).filter(z=>z.startsWith("_zaraz_")).forEach(y=>{try{j[l]["z_"+y.slice(7)]=JSON.parse(x.getItem(y))}catch{j[l]["z_"+y.slice(7)]=x.getItem(y)}});r.referrerPolicy="origin";r.src="/cdn-cgi/zaraz/s.js?z="+btoa(encodeURIComponent(JSON.stringify(j[l])));q.parentNode.insertBefore(r,q)};["complete","interactive"].includes(k.readyState)?zaraz.init():j.addEventListener("DOMContentLoaded",zaraz.init)}}(w,d,"zarazData","script");window.zaraz._p=async d$=>new Promise(ea=>{if(d$){d$.e&&d$.e.forEach(eb=>{try{const ec=d.querySelector("script[nonce]"),ed=ec?.nonce||ec?.getAttribute("nonce"),ee=d.createElement("script");ed&&(ee.nonce=ed);ee.innerHTML=eb;ee.onload=()=>{d.head.removeChild(ee)};d.head.appendChild(ee)}catch(ef){console.error(`Error executing script: ${eb}\n`,ef)}});Promise.allSettled((d$.f||[]).map(eg=>fetch(eg[0],eg[1])))}ea()});zaraz._p({"e":["(function(w,d){})(window,document)"]});})(window,document)}catch(e){throw fetch("/cdn-cgi/zaraz/t"),e;};</script></head>
+
+  <script src="https://unpkg.com/alpinejs" defer></script>
+
   <body
     x-data="{ page: 'comingSoon', 'loaded': true, 'darkMode': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
     x-init="
@@ -16,15 +19,78 @@
          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
     :class="{'dark bg-gray-900': darkMode === true}"
   >
-    <div
-  x-show="loaded"
-  x-init="window.addEventListener('DOMContentLoaded', () => {setTimeout(() => loaded = false, 500)})"
-  class="fixed left-0 top-0 z-999999 flex h-screen w-screen items-center justify-center bg-white dark:bg-black"
+
+
+<div
+    id="ID-load"
+    x-show="loaded"
+    x-transition.opacity.duration.300ms
+    class="ID-load fixed left-0 top-0 w-full h-screen bg-white dark:bg-black z-[999999]"
+    x-init="
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => loaded = false, 500)
+        })
+    "
 >
-  <div
-    class="h-16 w-16 animate-spin rounded-full border-4 border-solid border-brand-500 border-t-transparent"
-  ></div>
+    <div>
+        <div class="text-muted">
+            Cargando mytems...
+        </div>
+
+        <div class="id-load-content">
+
+            <!-- SHOP -->
+            <div class="id-load-icon id-shop">
+                <svg viewBox="0 0 576 512">
+                    <path d="M490.3 13.1l57.3 90.7c29.7 46.9 3.4 112-52.1 119.4c-4 .5-7.9 .8-12.1 .8c-26.1 0-49.2-11.4-65.2-29c-15.9 17.6-39 29-65.2 29s-49.3-11.4-65.2-29c-15.9 17.6-39 29-65.2 29s-49.3-11.4-65.2-29c-15.9 17.6-39.1 29-65.2 29c-4.1 0-8.2-.3-12.1-.8c-55.3-7.4-81.5-72.6-51.9-119.4L85.7 13.1C90.8 5 99.9 0 109.6 0H466.4c9.7 0 18.8 5 23.9 13.1z"/>
+                    <path d="M64 219.1V448c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V219.1c-5.1 2-10.6 3.4-16.5 4.1c-4 .5-7.9 .8-12.1 .8c-12.7 0-24.6-2.7-35.4-7.5V384H128V216.5c-10.8 4.8-22.9 7.5-35.6 7.5c-4.1 0-8.2-.3-12.1-.8c-5.7-.8-11.2-2.2-16.2-4.1z"/>
+                </svg>
+            </div>
+
+            <!-- CART -->
+            <div class="id-load-icon id-cart">
+                <svg viewBox="0 0 576 512">
+                    <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 14.3 47.9 35.4L128 64H551.3c17.7 0 32 14.3 32 32c0 2.6-.3 5.1-.9 7.6l-41 152.3c-8.5 31.4-37 53.1-69.5 53.1H192c-32.5 0-61.1-21.7-69.5-53.1L71.8 64H24C10.7 64 0 53.3 0 40V24z"/>
+                    <path d="M170.7 416a48 48 0 1 1 -96 0 48 48 0 1 1 96 0zm288 0a48 48 0 1 1 -96 0 48 48 0 1 1 96 0z"/>
+                </svg>
+            </div>
+
+            <!-- REGISTER -->
+            <div class="id-load-icon id-register">
+                <svg viewBox="0 0 512 512">
+                    <path d="M0 448V128C0 92.7 28.7 64 64 64H384c35.3 0 64 28.7 64 64V256h32c17.7 0 32 14.3 32 32v160c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32z"/>
+                    <path d="M160 96h64v64H160V96zm96 64h64V96H256v64z"/>
+                </svg>
+            </div>
+
+            <!-- REPORT -->
+            <div class="id-load-icon id-report">
+                <svg viewBox="0 0 512 512">
+                    <path d="M505 44.2c9.4 9.4 9.4 24.6 0 33.9L174.1 408.9c-9.1 9.1-21.5 14.1-34.6 14.1H48c-26.5 0-48-21.5-48-48v-91.5c0-13.1 5-25.6 14.1-34.7L324 7c9.4-9.4 24.6-9.4 33.9 0L505 44.2z"/>
+                </svg>
+            </div>
+
+            <!-- SALE -->
+            <div class="id-load-icon id-sale">
+                <svg viewBox="0 0 512 512">
+                    <path d="M477.6 19.1C462.9 7 443.1 0 422.6 0H144.5C124 0 104.2 7 89.6 19.1L4.4 87.2C1.6 89.5 0 92.5 0 95.7V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V95.7c0-3.2-1.6-6.2-4.4-8.5l-85.2-68.1z"/>
+                    <path d="M144 288a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm176 0a48 48 0 1 1 96 0 48 48 0 1 1 -96 0z"/>
+                </svg>
+            </div>
+
+            <!-- INVENTORY -->
+            <div class="id-load-icon id-invetory">
+                <svg viewBox="0 0 640 512">
+                    <path d="M176 48h288l40 80H136l40-80zM32 128H608c17.7 0 32 14.3 32 32V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V160c0-17.7 14.3-32 32-32z"/>
+                </svg>
+            </div>
+
+        </div>
+    </div>
 </div>
+
+
+
 
     <div class="relative z-1 bg-white p-6 sm:p-0 dark:bg-gray-900">
       <div
