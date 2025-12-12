@@ -213,11 +213,11 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                                     <div>
                                         <label
                                             class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-                                            Password<span class="text-error-500">*</span>
+                                            Contrase&ntilde;a<span class="text-error-500">*</span>
                                         </label>
                                         <div x-data="{ showPassword: false }" class="relative">
                                             <input :type="showPassword ? 'text' : 'password'"
-                                                placeholder="Enter your password"
+                                                placeholder="Escribe tu contraseña"
                                                 class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-2.5 pr-11 pl-4 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30" />
                                             <span @click="showPassword = !showPassword"
                                                 class="absolute top-1/2 right-4 z-30 -translate-y-1/2 cursor-pointer text-gray-500 dark:text-gray-400">
@@ -259,18 +259,17 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                                                         </span>
                                                     </div>
                                                 </div>
-                                                Recordar sesio&oacute;n
+                                                Mantener sesi&oacute;n iniciada
                                             </label>
                                         </div>
                                         <a href="/reset-password.html"
-                                            class="text-brand-500 hover:text-brand-600 dark:text-brand-400 text-sm">Forgot
-                                            password?</a>
+                                            class="text-brand-500 hover:text-brand-600 dark:text-brand-400 text-sm">¿Olvidaste tu contrase&ntilde;a?</a>
                                     </div>
                                     <!-- Button -->
                                     <div>
                                         <button
                                             class="bg-brand-500 shadow-theme-xs hover:bg-brand-600 flex w-full items-center justify-center rounded-lg px-4 py-3 text-sm font-medium text-white transition">
-                                            Ingresar
+                                            Acceder
                                         </button>
                                     </div>
                                 </div>
