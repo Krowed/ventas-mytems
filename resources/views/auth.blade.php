@@ -291,7 +291,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
 
                     <div class="flex max-w-xs flex-col items-center">
                         <a href="index.html" class="mb-4 block">
-                            <img src="assets/auth-logo.svg" alt="Logo" />
+                            <img src="{{ asset('assets/logo/logo.png') }}" alt="Logo" />
                         </a>
                         <p class="text-center text-gray-400 dark:text-white/60">
                             Gesti&oacute;n r&aacute;pida, simple y segura de tus comprobantes digitales
