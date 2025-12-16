@@ -1,13 +1,12 @@
 <!doctype html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Auth - Mytems</title>
-    <link rel="icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" href="{{ asset('assets/logo/favicon.ico') }}">
 
     <!-- Hoja de estilos del login -->
     <link href="{{ asset('assets/style_login.css') }}" rel="stylesheet">
@@ -291,7 +290,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
 
                     <div class="flex max-w-xs flex-col items-center">
                         <a href="index.html" class="mb-4 block">
-                            <img src="{{ asset('assets/logo/logo.png') }}" alt="Logo" />
+                            <img src="{{ asset('assets/logo/logo2.png') }}" alt="Logo" />
                         </a>
                         <p class="text-center text-gray-400 dark:text-white/60">
                             Gesti&oacute;n r&aacute;pida, simple y segura de tus comprobantes digitales
@@ -309,8 +308,6 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
         integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
         data-cf-beacon='{"version":"2024.11.0","token":"67f7a278e3374824ae6dd92295d38f77","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
         crossorigin="anonymous"></script>
-
-
 
 </body>
 
