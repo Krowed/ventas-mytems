@@ -12,11 +12,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $this->call(WarehouseSeeder::class);
+        $this->call(CashSeeder::class);
+        $this->call(SerieSeeder::class);
+        $this->call(UserSeeder::class);
+        $this->call(UnitSeeder::class);
+        $this->call(TypeDocumentSeeder::class);
+        $this->call(PayModeSeeder::class);
+        $this->call(IgvTypeAffectionSeeder::class);
+        $this->call(IdentityDocumentTypeSeeder::class);
+        $this->call(CurrencySeeder::class);
+        $this->call(CountrySeeder::class);
+        $this->call(CreditNoteTypeSeeder::class);
+        $this->call(DebitNoteTypeSeeder::class);
     }
 }
