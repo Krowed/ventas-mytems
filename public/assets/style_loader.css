@@ -134,3 +134,17 @@ body.loading, html.loading {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* =========================
+   THEMES (LIGHT / DARK)
+   ========================= */
+
+/* LIGHT */
+html[data-theme="light"] .ID-load {
+    background-color: #f3f4f6; /* gris claro elegante */
+}
+
+/* DARK */
+html[data-theme="dark"] .ID-load {
+    background-color: oklch(21% .006 285.885); /* azul oscuro / slate */
+}

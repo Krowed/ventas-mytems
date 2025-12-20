@@ -93,6 +93,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                     loading = false
                 }, 200)
             })">
+
             <div class="text-center">
                 <div class="mb-2" style="font-size:15px;color:#6d7b8a;">Cargando Mytems...</div>
 
@@ -120,7 +121,6 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                             <circle fill="currentColor" cx="432" cy="432" r="48" />
                         </svg>
                     </div>
-
 
                     <!-- REGISTER -->
                     <div class="id-load-icon id-register" title="register">
@@ -165,9 +165,6 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                                 d="M248.6 319.2c-2.4-.6-4.7-1.4-7-2.5l-.6-.3c2.4 1.2 4.9 2.2 7.5 2.8zm134.7 .8H256.6c11.5-.2 22.5-6.7 28-17.7c7.9-15.8 1.5-35-14.3-42.9L224 236.2V160c0-17.7 14.3-32 32-32H384c17.7 0 32 14.3 32 32v76.2l-46.3 23.2c-15.8 7.9-22.2 27.1-14.3 42.9c5.5 11 16.5 17.4 28 17.7zm8.5-1c2.5-.6 4.8-1.5 7-2.7l-.5 .3c-2.1 1.1-4.3 1.9-6.5 2.4z" />
                         </svg>
                     </div>
-
-
-
                 </div>
             </div>
         </div>

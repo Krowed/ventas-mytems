@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('districts', function (Blueprint $table) {
+        Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->string('codigo');
-            $table->string('distrito');
-            $table->string('provincia');
-            $table->string('departamento');
+            $table->integer('iddoc');
+            $table->string('dni_ruc', 15);
+            $table->string('nombres');
+            $table->string('direccion');
+            $table->string('codigo_pais', 2);
+            $table->string('ubigeo', 6)->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('districts');
+        Schema::dropIfExists('clients');
     }
 };

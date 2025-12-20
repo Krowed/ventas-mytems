@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Brand;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,5 +27,9 @@ class DatabaseSeeder extends Seeder
         $this->call(CountrySeeder::class);
         $this->call(CreditNoteTypeSeeder::class);
         $this->call(DebitNoteTypeSeeder::class);
+        $this->call(DistrictSeeder::class);
+        $this->call(ClientSeeder::class);
+        $this->call(BrandSeeder::class);
+        $this->call(CategorySeeder::class);
     }
 }
