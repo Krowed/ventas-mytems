@@ -360,9 +360,15 @@ rect.legend-mouseover-inactive,
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   font-size: 26px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Outfit', system-ui, -apple-system, "Segoe UI",
+               Roboto, "Helvetica Neue", Arial, sans-serif;
   line-height: 14px;
   font-weight: 900;
+}
+
+.apexcharts-tooltip * {
+  font-family: 'Outfit', system-ui, -apple-system, "Segoe UI",
+               Roboto, "Helvetica Neue", Arial, sans-serif !important;
 }
 
 .apexcharts-tooltip-marker[shape="circle"]::before {

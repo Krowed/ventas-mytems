@@ -9,7 +9,7 @@
     <meta content="Themesdesign" name="author">
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/favicon-CK1QI2Xs.ico">
+    <link rel="icon" href="{{ asset('assets/logo/favicon.ico') }}">
 
     <script>
         (function() {
@@ -1749,7 +1749,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                                     <a class="flex items-center gap-x-3.5 py-1.5 font-medium px-3 text-default-600 hover:bg-default-150 rounded"
                                         href="auth-basic-logout.html">
                                         <i data-lucide="log-out" class="size-4"></i>
-                                        Sign Out
+                                        Cerrar Sesi&oacute;n
                                     </a>
                                 </div>
                             </div>
