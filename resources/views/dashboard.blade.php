@@ -37,8 +37,8 @@
                 dir: html.getAttribute("dir") || defaultConfig.dir,
 
                 theme: html.getAttribute("data-theme") === 'system' ?
-                    getSystemTheme() :
-                    html.getAttribute("data-theme") || (defaultConfig.theme === 'system' ? getSystemTheme() :
+                    getSystemTheme() : html.getAttribute("data-theme") || (defaultConfig.theme === 'system' ?
+                        getSystemTheme() :
                         defaultConfig.theme),
                 sidenav: {
                     color: html.getAttribute("data-sidenav-color") || defaultConfig.sidenav.color,
@@ -86,6 +86,7 @@
     <link rel="modulepreload" crossorigin href="{{ asset('assets/flatpickr-DxeCcIwz.js') }}">
     <link rel="stylesheet" crossorigin href="{{ asset('assets/app-HMWHReTH.css') }}">
     <link href="{{ asset('assets/style_loader.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/style_toasts.css') }}" rel="stylesheet">
 
 
 
@@ -95,17 +96,10 @@
 <body x-data="{ page: 'comingSoon', 'loaded': true, 'darkMode': false, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }" x-init="darkMode = JSON.parse(localStorage.getItem('darkMode'));
 $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))" :class="{ 'dark bg-gray-900': darkMode === true }">
 
-    <div
-    x-data="{ loading: true }"
-    id="global-loader"
-    @loader-hide.window="loading = false"
->
-    <div
-        id="ID-load"
-        class="ID-load fixed inset-0 bg-white dark:bg-black z-[999999] flex justify-center items-center"
-        x-show="loading"
-        x-transition.opacity.duration.400ms
-    >
+    <div x-data="{ loading: true }" id="global-loader" @loader-hide.window="loading = false">
+        <div id="ID-load"
+            class="ID-load fixed inset-0 bg-white dark:bg-black z-[999999] flex justify-center items-center"
+            x-show="loading" x-transition.opacity.duration.400ms>
 
             <div class="text-center">
                 <div class="mb-2" style="font-size:15px;color:#6d7b8a;">Cargando Mytems...</div>
@@ -188,17 +182,20 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
         <!-- Start Sidebar -->
         <aside id="app-menu" class="app-menu">
 
-<div class="logo-box sticky top-0 flex min-h-topbar-height items-center justify-center px-6 transition-all duration-300">
-    <a href="index.html">
-        <span class="logo-lg text-2xl font-extrabold tracking-wide text-gray-900 dark:text-white select-none">
-            Mytems
-        </span>
+            <div
+                class="logo-box sticky top-0 flex min-h-topbar-height items-center justify-center px-6 transition-all duration-300">
+                <a href="index.html">
+                    <span
+                        class="logo-lg text-2xl font-extrabold tracking-wide text-gray-900 dark:text-white select-none">
+                        Mytems
+                    </span>
 
-        <span class="logo-sm hidden text-2xl font-extrabold tracking-wide text-gray-900 dark:text-white select-none">
-            M
-        </span>
-    </a>
-</div>
+                    <span
+                        class="logo-sm hidden text-2xl font-extrabold tracking-wide text-gray-900 dark:text-white select-none">
+                        M
+                    </span>
+                </a>
+            </div>
 
             <!-- Sidenav Menu Toggle Button -->
             <div class="absolute top-0 end-5 flex h-topbar items-center justify">
@@ -1430,8 +1427,10 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
 
                                             <div class="flex justify-between w-full text-sm">
                                                 <div>
-                                                    <h6 class="mb-2 font-medium text-default-800"><b>@willie_passem</b>
-                                                        followed you</h6>
+                                                    <h6 class="mb-2 font-medium text-default-800">
+                                                        <b>@willie_passem</b>
+                                                        followed you
+                                                    </h6>
                                                     <p class="flex items-center gap-1 text-default-500 text-xs">
                                                         <i data-lucide="clock" class="align-middle size-3.5"></i>
                                                         <span>Wednesday 03:42 PM</span>
@@ -1457,7 +1456,8 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                                             <div class="flex justify-between w-full">
                                                 <div class="text-sm">
                                                     <h6 class="mb-2 font-medium text-default-800">
-                                                        <b>@caroline_jessica</b> commented <br>on your post</h6>
+                                                        <b>@caroline_jessica</b> commented <br>on your post
+                                                    </h6>
                                                     <p class="flex items-center gap-1 text-default-500 text-xs">
                                                         <i data-lucide="clock" class="align-middle size-3.5"></i>
                                                         <span>Wednesday 03:42 PM</span>
@@ -1522,7 +1522,8 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                                             <div class="flex justify-between w-full">
                                                 <div>
                                                     <h6 class="mb-1 font-medium text-default-800  text-sm">
-                                                        <b>@scott</b> liked your post</h6>
+                                                        <b>@scott</b> liked your post
+                                                    </h6>
                                                     <p class="flex gap-1 items-center text-default-500 text-xs">
                                                         <i data-lucide="clock"
                                                             class="align-middle size-3.5"></i><span>Thursday 06:59
@@ -1553,7 +1554,8 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                                             <div class="flex justify-between w-full">
                                                 <div class="text-sm">
                                                     <h6 class="mb-2 font-medium text-default-800">
-                                                        <b>@caroline_jessica</b> commented <br>on your post</h6>
+                                                        <b>@caroline_jessica</b> commented <br>on your post
+                                                    </h6>
                                                     <p class="flex items-center gap-1 text-default-500 text-xs">
                                                         <i data-lucide="clock" class="align-middle size-3.5"></i>
                                                         <span>Wednesday 03:42 PM</span>
@@ -1590,7 +1592,8 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                                             <div class="flex justify-between w-full">
                                                 <div>
                                                     <h6 class="mb-1 font-medium text-default-800  text-sm">
-                                                        <b>@scott</b> liked your post</h6>
+                                                        <b>@scott</b> liked your post
+                                                    </h6>
                                                     <p class="flex gap-1 items-center text-default-500 text-xs">
                                                         <i data-lucide="clock"
                                                             class="align-middle size-3.5"></i><span>Thursday 06:59
@@ -1621,7 +1624,8 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                                             <div class="flex justify-between w-full text-sm">
                                                 <div>
                                                     <h6 class="mb-2 font-medium text-default-800">
-                                                        <b>@willie_passem</b> followed you</h6>
+                                                        <b>@willie_passem</b> followed you
+                                                    </h6>
                                                     <p class="flex items-center gap-1 text-default-500 text-xs">
                                                         <i data-lucide="clock" class="align-middle size-3.5"></i>
                                                         <span>Wednesday 03:42 PM</span>
@@ -1707,8 +1711,8 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                                     <a href="#!" class="flex gap-3">
                                         <div class="relative inline-block">
                                             <div class="rounded bg-default-200">
-                                                <img src="{{ asset('assets/avatar-1-DOkfBXSU.png') }}" alt=""
-                                                    class="size-12 rounded">
+                                                <img src="{{ asset('assets/avatar-1-DOkfBXSU.png') }}"
+                                                    alt="" class="size-12 rounded">
                                             </div>
                                             <span
                                                 class="-top-1 -end-1 absolute size-2.5 bg-green-400 border-2 border-white rounded-full"></span>
@@ -1789,7 +1793,8 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                                     <p class="mb-5 text-white/70 text-sm">An ecommerce dashboard has just that
                                         purpose. It provides your ecommerce team with a clear overview of key financial
                                         and website KPIs at any time.</p>
-                                    <button type="button" class="btn bg-primary text-white">Take a Product</button>
+                                    <button id="btnTest" type="button" class="btn bg-primary text-white">Take a
+                                        Product</button>
                                 </div>
 
                                 <div class="col-span-4 ms-auto lg:block hidden">
@@ -3128,10 +3133,14 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
                     </div>
                 </div>
 
+                
             </main>
 
             <!-- Footer Start -->
             <footer class="mt-auto footer flex items-center py-5 border-t border-default-200">
+
+                
+
                 <div class="lg:px-8 px-6 w-full flex md:justify-between justify-center gap-4">
                     <div>
                         <script>
@@ -3483,60 +3492,113 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
             </div>
         </div>
     </div>
+    
 
-   <script>
-/* ===============================
-   LOADER GLOBAL (sin charts)
-================================ */
-window.resourcesPending = {
-    images: 0
-};
+    <div id="wa-toast-container"></div>
 
-window.hideLoader = function () {
-    window.dispatchEvent(new Event('loader-hide'));
-};
 
-window.checkResourcesReady = function () {
-    if (window.resourcesPending.images <= 0) {
-        window.hideLoader();
-    }
-};
+    <script>
+        /* ===============================
+           LOADER GLOBAL (sin charts)
+        ================================ */
+        window.resourcesPending = {
+            images: 0
+        };
 
-window.trackImages = function () {
-    const images = Array.from(document.images)
-        .filter(img => img.offsetParent !== null);
+        window.hideLoader = function() {
+            window.dispatchEvent(new Event('loader-hide'));
+        };
 
-    window.resourcesPending.images = images.length;
+        window.checkResourcesReady = function() {
+            if (window.resourcesPending.images <= 0) {
+                window.hideLoader();
+            }
+        };
 
-    if (images.length === 0) {
-        window.checkResourcesReady();
-        return;
-    }
+        window.trackImages = function() {
+            const images = Array.from(document.images)
+                .filter(img => img.offsetParent !== null);
 
-    images.forEach(img => {
-        if (img.complete) {
-            window.resourcesPending.images--;
-            window.checkResourcesReady();
-        } else {
-            img.addEventListener('load', () => {
-                window.resourcesPending.images--;
+            window.resourcesPending.images = images.length;
+
+            if (images.length === 0) {
                 window.checkResourcesReady();
+                return;
+            }
+
+            images.forEach(img => {
+                if (img.complete) {
+                    window.resourcesPending.images--;
+                    window.checkResourcesReady();
+                } else {
+                    img.addEventListener('load', () => {
+                        window.resourcesPending.images--;
+                        window.checkResourcesReady();
+                    });
+                    img.addEventListener('error', () => {
+                        window.resourcesPending.images--;
+                        window.checkResourcesReady();
+                    });
+                }
             });
-            img.addEventListener('error', () => {
-                window.resourcesPending.images--;
-                window.checkResourcesReady();
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            window.trackImages();
+        });
+    </script>
+
+    <script src="{{ asset('assets/js/functions.js') }}"></script>
+    @yield('scripts')
+    {{-- <script>
+        const btnTest = document.getElementById('btnTest');
+        /* btnTest.addEventListener('click', function() {
+            notify.success('Datos actualizados correctamente');
+            notify.warning('Debe ingresar un número');
+            notify.error('No se pudo eliminar');
+            notify.info('Procesando información…');
+        }); */
+
+        
+    </script> --}}
+
+<script type="module">
+    // Importamos el archivo como un módulo completo
+    import * as SwalModule from "{{ asset('assets/plugins-sweetalert-Gt60lZPu.js') }}";
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Buscamos la instancia. En estos bundles suele estar en 'default' 
+        // o en una propiedad llamada 'Swal' o 'w'
+        const Swal = SwalModule.default || SwalModule.Swal || window.Swal;
+
+        const btnTest = document.getElementById('btnTest');
+
+        if (btnTest) {
+            btnTest.addEventListener('click', () => {
+                if (Swal) {
+                    Swal.fire({
+                        title: '¿Confirmar?',
+                        text: '¿Deseas continuar?',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Sí',
+                        cancelButtonText: 'No',
+                        // Aplicamos los estilos de Tailwind que detecté en tu archivo
+                        customClass: {
+                            confirmButton: "text-white bg-green-500 border-green-500 btn hover:bg-green-600 focus:ring focus:ring-green-100",
+                            cancelButton: "text-white bg-red-500 border-red-500 btn hover:bg-red-600 focus:ring focus:ring-red-100"
+                        },
+                        buttonsStyling: false
+                    });
+                } else {
+                    console.error('No se pudo encontrar la instancia de SweetAlert. Verifica la ruta del archivo.');
+                }
             });
         }
     });
-};
-
-document.addEventListener('DOMContentLoaded', () => {
-    window.trackImages();
-});
 </script>
 
 
 
 </body>
-
 </html>

@@ -39,7 +39,7 @@ body.loading, html.loading {
 }
 
 /* =========================
-   Iconos del loader
+   Loader – contenido e iconos
    ========================= */
 .id-load-content {
     display: flex;
@@ -76,29 +76,27 @@ body.loading, html.loading {
 }
 
 /* Colores individuales */
-.id-load-icon.id-shop      { background-color: #488fff; }
-.id-load-icon.id-cart      { background-color: #aa77dd; }
-.id-load-icon.id-register  { background-color: #7775d9; }
-.id-load-icon.id-report    { background-color: #17ce7b; }
-.id-load-icon.id-sale      { background-color: #feaa55; }
+.id-load-icon.id-shop       { background-color: #488fff; }
+.id-load-icon.id-cart       { background-color: #aa77dd; }
+.id-load-icon.id-register   { background-color: #7775d9; }
+.id-load-icon.id-report     { background-color: #17ce7b; }
+.id-load-icon.id-sale       { background-color: #feaa55; }
 .id-load-icon.id-inventory  { background-color: #0dd5aa; }
 
-/* Delays para efecto cascada */
+/* Delays cascada */
 .id-load-icon:nth-child(1) { animation-delay: 0s; }
-.id-load-icon:nth-child(2) { animation-delay: 0.16667s; }
-.id-load-icon:nth-child(3) { animation-delay: 0.33333s; }
-.id-load-icon:nth-child(4) { animation-delay: 0.5s; }
-.id-load-icon:nth-child(5) { animation-delay: 0.66667s; }
-.id-load-icon:nth-child(6) { animation-delay: 0.83333s; }
+.id-load-icon:nth-child(2) { animation-delay: .16s; }
+.id-load-icon:nth-child(3) { animation-delay: .32s; }
+.id-load-icon:nth-child(4) { animation-delay: .48s; }
+.id-load-icon:nth-child(5) { animation-delay: .64s; }
+.id-load-icon:nth-child(6) { animation-delay: .8s; }
 
-/* =========================
-   Animación pulse con grayscale
-   ========================= */
+/* Animación */
 @keyframes pulse {
     0% {
         transform: scale(1);
         filter: grayscale(1);
-        opacity: 0.7;
+        opacity: .7;
     }
     25% {
         transform: scale(1.35);
@@ -113,26 +111,8 @@ body.loading, html.loading {
     100% {
         transform: scale(1);
         filter: grayscale(1);
-        opacity: 0.7;
+        opacity: .7;
     }
-}
-
-/* =========================
-   Contenido principal
-   ========================= */
-.content {
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    min-height: 100vh;
-    overflow-y: auto;
-    margin: 0;
-    padding: 0;
-}
-
-.content.visible {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 /* =========================
@@ -141,10 +121,10 @@ body.loading, html.loading {
 
 /* LIGHT */
 html[data-theme="light"] .ID-load {
-    background-color: #f3f4f6; /* gris claro elegante */
+    background-color: #f3f4f6;
 }
 
 /* DARK */
 html[data-theme="dark"] .ID-load {
-    background-color: oklch(21% .006 285.885); /* azul oscuro / slate */
+    background-color: oklch(21% .006 285.885);
 }
