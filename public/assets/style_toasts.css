@@ -225,5 +225,3 @@ html[data-theme="dark"] .wa-toast:not(.success):not(.warning):not(.error):not(.i
 @keyframes modalOut {
     to { transform: scale(0.7); opacity: 0; }
 }
-
-.hidden { display: none; }
