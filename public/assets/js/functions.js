@@ -27,3 +27,25 @@ notify.success = (msg) => notify(msg, 'success');
 notify.warning = (msg) => notify(msg, 'warning');
 notify.error = (msg) => notify(msg, 'error');
 notify.info = (msg) => notify(msg, 'info');
+
+
+window.confirmarAccion = (titulo, texto, callback) => {
+    Swal.fire({
+        title: titulo,
+        text: texto,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, confirmar',
+        buttonsStyling: false,
+        customClass: {
+            popup: 'rounded-md shadow-xl border dark:border-slate-700 dark:bg-slate-800',
+            confirmButton: 'text-white btn bg-primary px-5 py-2 rounded-md ltr:mr-3 focus:outline-none',
+            cancelButton: 'text-white bg-red-500 btn px-5 py-2 rounded-md focus:outline-none',
+            actions: 'flex justify-center gap-3'
+        }
+    }).then((result) => {
+        if (result.isConfirmed) callback();
+    });
+};
+
+// confirmarAccion('¿Borrar?', 'No hay vuelta atrás', () => { ... tu lógica ... });

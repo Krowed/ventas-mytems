@@ -3496,11 +3496,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
 
     <div id="wa-toast-container"></div>
 
-
     <script>
-        /* ===============================
-           LOADER GLOBAL (sin charts)
-        ================================ */
         window.resourcesPending = {
             images: 0
         };
@@ -3549,56 +3545,9 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
     </script>
 
     <script src="{{ asset('assets/js/functions.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @yield('scripts')
-    {{-- <script>
-        const btnTest = document.getElementById('btnTest');
-        /* btnTest.addEventListener('click', function() {
-            notify.success('Datos actualizados correctamente');
-            notify.warning('Debe ingresar un número');
-            notify.error('No se pudo eliminar');
-            notify.info('Procesando información…');
-        }); */
-
-        
-    </script> --}}
-
-<script type="module">
-    // Importamos el archivo como un módulo completo
-    import * as SwalModule from "{{ asset('assets/plugins-sweetalert-Gt60lZPu.js') }}";
-
-    document.addEventListener('DOMContentLoaded', () => {
-        // Buscamos la instancia. En estos bundles suele estar en 'default' 
-        // o en una propiedad llamada 'Swal' o 'w'
-        const Swal = SwalModule.default || SwalModule.Swal || window.Swal;
-
-        const btnTest = document.getElementById('btnTest');
-
-        if (btnTest) {
-            btnTest.addEventListener('click', () => {
-                if (Swal) {
-                    Swal.fire({
-                        title: '¿Confirmar?',
-                        text: '¿Deseas continuar?',
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonText: 'Sí',
-                        cancelButtonText: 'No',
-                        // Aplicamos los estilos de Tailwind que detecté en tu archivo
-                        customClass: {
-                            confirmButton: "text-white bg-green-500 border-green-500 btn hover:bg-green-600 focus:ring focus:ring-green-100",
-                            cancelButton: "text-white bg-red-500 border-red-500 btn hover:bg-red-600 focus:ring focus:ring-red-100"
-                        },
-                        buttonsStyling: false
-                    });
-                } else {
-                    console.error('No se pudo encontrar la instancia de SweetAlert. Verifica la ruta del archivo.');
-                }
-            });
-        }
-    });
-</script>
-
-
+   
 
 </body>
 </html>
