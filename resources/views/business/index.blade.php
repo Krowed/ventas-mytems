@@ -68,25 +68,6 @@
                                 administrativo, pensados para emprendedores y empresas que buscan crecer de forma ordenada y
                                 eficiente.
                             </p>
-
-                            <div class="flex gap-2 mt-4">
-                                <a href="#!"
-                                    class="flex items-center justify-center transition-all duration-200 rounded size-9 text-info bg-info/10 hover:bg-info/20">
-                                    <i data-lucide="facebook" class="size-4"></i>
-                                </a>
-                                <a href="#!"
-                                    class="flex items-center justify-center transition-all duration-200 rounded size-9 text-warning bg-warning/10 hover:bg-warning/20">
-                                    <i data-lucide="instagram" class="size-4"></i>
-                                </a>
-                                <a href="#!"
-                                    class="flex items-center justify-center transition-all duration-200 rounded size-9 text-primary bg-primary/10 hover:bg-primary/20">
-                                    <i data-lucide="music-2" class="size-4"></i>
-                                </a>
-                                <a href="#!"
-                                    class="flex items-center justify-center transition-all duration-200 rounded size-9 text-success bg-success/10 hover:bg-success/20">
-                                    <i data-lucide="message-circle" class="size-4"></i>
-                                </a>
-                            </div>
                         </div>
 
                         <div class="lg:col-span-2 col-span-1">
@@ -186,7 +167,6 @@
                         <div class="flex justify-end mt-6 gap-4">
                             <button type="button" class="btn bg-success text-white btn-save-info flex items-center">
                                 <span class="text-save-info">Guardar cambios</span>
-
                                 <span class="spinner-grow spinner-grow-sm me-1 hidden text-saving-info" role="status"
                                     aria-hidden="true"></span>
                                 <span class="text-saving-info hidden ml-2">Guardando...</span>
@@ -329,4 +309,7 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    @include('business.js')
 @endsection

@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CountrySeeder::class);
         $this->call(CreditNoteTypeSeeder::class);
         $this->call(DebitNoteTypeSeeder::class);
+        $this->call(DepartmentSeeder::class);
+        $this->call(ProvinceSeeder::class);
         $this->call(DistrictSeeder::class);
         $this->call(ClientSeeder::class);
         $this->call(BrandSeeder::class);

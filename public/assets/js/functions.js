@@ -49,3 +49,4 @@ window.confirmarAccion = (titulo, texto, callback) => {
 };
 
 // confirmarAccion('¿Borrar?', 'No hay vuelta atrás', () => { ... tu lógica ... });
+const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content'); 

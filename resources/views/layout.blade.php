@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description">
     <meta content="Themesdesign" name="author">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- App favicon -->
     <link rel="icon" href="{{ asset('assets/logo/favicon.ico') }}">
@@ -87,6 +88,9 @@
     <link rel="modulepreload" crossorigin href="{{ asset('assets/flatpickr-DxeCcIwz.js') }}">
     <link rel="modulepreload" crossorigin href="{{ asset('assets/form-choices-CeuTJViI.js') }}">
     <link rel="stylesheet" crossorigin href="{{ asset('assets/app-HMWHReTH.css') }}">
+    <linkrel="stylesheet" href="{{ asset('assets/css/choices.min.css') }}"
+/>
+
     <link rel="stylesheet" href="{{ asset('assets/css/waitMe.min.css') }}">
     <link href="{{ asset('assets/style_loader.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/style_toasts.css') }}" rel="stylesheet">
@@ -2126,6 +2130,8 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
     <script src="{{ asset('assets/js/setting_load_image.min.js') }}"></script>
     <script src="{{ asset('assets/js/functions.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('assets/js/choices.min.js') }}"></script>
+
     @yield('scripts')
    
 </body>

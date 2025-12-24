@@ -14,7 +14,7 @@ class Province extends Model
     protected $fillable     =
     [
         'codigo',
-        'descripcion',
+        'provincia',
         'codigo_departamento',
         'estado'
     ];
