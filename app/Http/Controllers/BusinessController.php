@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 
 class BusinessController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $business       = Business::find(1);
         $departments    = Department::get();
         return view('business.index', compact(
@@ -19,7 +20,8 @@ class BusinessController extends Controller
         ));
     }
 
-    public function load_ubigeo() {
+    public function load_ubigeo()
+    {
         $ubigeo         = Business::find(1)->ubigeo;
         $departments    = Department::get();
         $provinces      = Province::get();
@@ -28,12 +30,11 @@ class BusinessController extends Controller
         $province       = NULL;
         $district       = NULL;
 
-        if(!empty($ubigeo)) {
+        if (!empty($ubigeo)) {
             $district       = District::where('codigo', $ubigeo)->first();
             $province       = Province::where('provincia', $district->provincia)->first();
             $department     = Department::where('departamento', $district->departamento)->first();
-        } 
-        else {
+        } else {
             $district   = NULL;
             $province   = NULL;
             $department = NULL;
@@ -50,7 +51,8 @@ class BusinessController extends Controller
         ]);
     }
 
-    public function load_provinces(Request $request) {
+    public function load_provinces(Request $request)
+    {
         $codigo         = $request->input('codigo');
         $provinces      = Province::where('departamento_codigo', $codigo)->get();
         return response()->json([
@@ -58,11 +60,12 @@ class BusinessController extends Controller
         ]);
     }
 
-    public function load_districts(Request $request) {
+    public function load_districts(Request $request)
+    {
         $codigo                 = $request->input('codigo');
         $codigo_departamento    = $request->input('codigo_departamento');
         $districts              = District::where('departamento_codigo', $codigo_departamento)
-                                            ->where('provincia_codigo', $codigo)->get();
+            ->where('provincia_codigo', $codigo)->get();
         return response()->json([
             'districts' => $districts
         ]);

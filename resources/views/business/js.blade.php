@@ -14,11 +14,11 @@ function load_ubigeo() {
     })
     .then(res => res.json())
     .then(r => {
-        const selDepartamento   = document.querySelector('select[name="departamento"]'),
+        let selDepartamento   = document.querySelector('select[name="departamento"]'),
             selProvincia        = document.querySelector('select[name="provincia"]'),
             selDistrito         = document.querySelector('select[name="distrito"]');
 
-        const wrapProvincia     = document.getElementById('wrapper_province'),
+        let wrapProvincia     = document.getElementById('wrapper_province'),
             wrapDistrito        = document.getElementById('wrapper_district');
 
         let htmlDepartment      = '',
@@ -76,7 +76,7 @@ function load_ubigeo() {
                 itemSelectText: ''
             });
     })
-    .catch(err => console.error('Error ubigeo:', err));
+    .catch(err => console.error(err));
 }
 
 let selectDeparment = document.querySelector('select[name="departamento"]');
@@ -85,12 +85,32 @@ selectDeparment.addEventListener('change', function() {
     fetch("{{ route('admin.load_provinces') }}", {
         method: "POST",
         headers: {
-            'Content-Type': 'application/json'
-        }
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': csrfToken
+        },
+        body: JSON.stringify({
+            codigo: value
+        })
     })
-    .then()
-    .then()
-    .catch()
+    .then(res => res.json())
+    .then(r => {
+        let htmlProvince        = '',
+            selProvincia        = document.querySelector('select[name="provincia"]');
+
+        console.log(r.provinces);
+        r.provinces.forEach(prov => {
+            htmlProvince += `<option value="${prov.codigo}">${prov.provincia}</option>`;
+        });
+
+        selProvincia.innerHTML = htmlProvince;
+        if (provinciaChoices) provinciaChoices.destroy();
+        provinciaChoices = new Choices(selProvincia, {
+            placeholder: true,
+            placeholderValue: '[SELECCIONE]',
+            itemSelectText: ''
+        });
+    })
+    .catch(err => console.log(err))
 });
 
 document.addEventListener('DOMContentLoaded', function() {
