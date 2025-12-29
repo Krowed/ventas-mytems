@@ -64,8 +64,11 @@ class BusinessController extends Controller
     {
         $codigo                 = $request->input('codigo');
         $codigo_departamento    = $request->input('codigo_departamento');
-        $districts              = District::where('departamento_codigo', $codigo_departamento)
-            ->where('provincia_codigo', $codigo)->get();
+        $departamento           = Department::where('codigo', $codigo_departamento)->first()->departamento;
+        dd($departamento);
+        $districts              = District::where('departamento', $departamento)
+            ->where('codigo', $codigo)->get();
+        dd($districts);
         return response()->json([
             'districts' => $districts
         ]);

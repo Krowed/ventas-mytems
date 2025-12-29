@@ -111,8 +111,8 @@ selDepartamento.addEventListener('change', function() {
     })
     .then(res => res.json())
     .then(r => {
-        selProvincia.innerHTML = `<option value="">[SELECCIONE]</option>`;
-        selDistrito.innerHTML  = `<option value="">[SELECCIONE]</option>`;
+        selProvincia.innerHTML = ``;
+        selDistrito.innerHTML  = ``;
 
         r.provinces.forEach(prov => {
             selProvincia.innerHTML += `
@@ -135,6 +135,23 @@ selDepartamento.addEventListener('change', function() {
             placeholderValue: '[SELECCIONE]',
             itemSelectText: ''
         });
+    })
+    .catch(err => console.log(err))
+});
+
+selProvincia.addEventListener('change', function() {
+    let value = this.value,
+        codigo_departamento = selDepartamento.value;
+    fetch("{{ route('admin.load_districts') }}", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': csrfToken
+        },
+        body: JSON.stringify({ codigo: value, codigo_departamento : codigo_departamento })
+    }).then(res => res.json())
+    .then(r => {
+
     })
     .catch(err => console.log(err))
 });

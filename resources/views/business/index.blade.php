@@ -30,7 +30,7 @@
                         <div class="lg:col-span-2 col-span-1 flex justify-center lg:justify-start">
                             <div
                                 class="relative inline-block rounded-full shadow-md size-20 bg-default-100 dark:bg-default-200 profile-user xl:size-28">
-                                <img src="assets/logo/logo_pdf.png" alt=""
+                                <img src="assets/logo/logo_pdf_black.png" alt=""
                                     class="object-cover border-0 rounded-full img-thumbnail user-profile-image w-full h-full">
                                 <div
                                     class="absolute bottom-0 flex items-center justify-center rounded-full size-8 end-0 profile-photo-edit">
