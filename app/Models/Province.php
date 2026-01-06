@@ -15,8 +15,7 @@ class Province extends Model
     [
         'codigo',
         'provincia',
-        'codigo_departamento',
+        'departamento_codigo',
         'estado'
     ];
-
 }

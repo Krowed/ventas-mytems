@@ -90,13 +90,15 @@
     <link rel="stylesheet" crossorigin href="{{ asset('assets/app-HMWHReTH.css') }}">
     <linkrel="stylesheet" href="{{ asset('assets/css/choices.min.css') }}"
 />
-
+   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('assets/select2/dist/select2-tailwindcss-theme-plain.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/waitMe.min.css') }}">
     <link href="{{ asset('assets/style_loader.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/style_toasts.css') }}" rel="stylesheet">
 
 
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://unpkg.com/alpinejs" defer></script>
 </head>
 
@@ -2130,7 +2132,6 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
     <script src="{{ asset('assets/js/setting_load_image.min.js') }}"></script>
     <script src="{{ asset('assets/js/functions.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="{{ asset('assets/js/choices.min.js') }}"></script>
 
     @yield('scripts')
    

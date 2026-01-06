@@ -24,8 +24,6 @@ class BusinessController extends Controller
     {
         $ubigeo         = Business::find(1)->ubigeo;
         $departments    = Department::get();
-        $provinces      = Province::get();
-        $districts      = District::get();
         $department     = NULL;
         $province       = NULL;
         $district       = NULL;
@@ -34,6 +32,10 @@ class BusinessController extends Controller
             $district       = District::where('codigo', $ubigeo)->first();
             $province       = Province::where('provincia', $district->provincia)->first();
             $department     = Department::where('departamento', $district->departamento)->first();
+
+            $provinces      = Province::where('departamento_codigo', $department->codigo)->get();
+            $districts      = District::where('departamento', $department->departamento)
+                ->where('provincia', $province->provincia)->get();
         } else {
             $district   = NULL;
             $province   = NULL;

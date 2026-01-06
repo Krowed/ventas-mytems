@@ -1,11 +1,23 @@
 <script>
-let departamentoChoices;
-let provinciaChoices;
-let distritoChoices;
+// Usamos nombres de variables claros para jQuery
+let $selDepartamento = $('select[name="departamento"]'),
+    $selProvincia    = $('select[name="provincia"]'),
+    $selDistrito     = $('select[name="distrito"]');
 
-let selDepartamento = document.querySelector('select[name="departamento"]'),
-    selProvincia   = document.querySelector('select[name="provincia"]'),
-    selDistrito    = document.querySelector('select[name="distrito"]');
+
+function initSelect2() {
+    const config = {
+        theme: "tailwindcss-4", 
+        width: '100%',
+        placeholder: "[SELECCIONE]",
+        //allowClear: true,
+        selectionCssClass: 'py-1',
+        // ESTO ES LO QUE HACE QUE FUNCIONE COMO EL EJEMPLO:
+        dropdownParent: $(document.body) 
+    };
+
+    $('select[name="departamento"], select[name="provincia"], select[name="distrito"]').select2(config);
+}
 
 function load_ubigeo() {
     fetch("{{ route('admin.load_ubigeo') }}", {
@@ -14,149 +26,89 @@ function load_ubigeo() {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': csrfToken
         },
-        body: JSON.stringify({ }) // enviar body vacío para Laravel
+        body: JSON.stringify({ })
     })
     .then(res => res.json())
     .then(r => {
-
         let wrapProvincia = document.getElementById('wrapper_province'),
             wrapDistrito  = document.getElementById('wrapper_district');
 
-        // Reset HTML
-        selDepartamento.innerHTML = '';
-        selProvincia.innerHTML   = '';
-        selDistrito.innerHTML    = '';
+        // 1. Destruir instancias previas
+        if ($selDepartamento.data('select2')) {
+            $selDepartamento.select2('destroy');
+            $selProvincia.select2('destroy');
+            $selDistrito.select2('destroy');
+        }
 
-        let htmlDepartment = `<option value="">[SELECCIONE]</option>`;
-        let htmlProvince   = `<option value="">[SELECCIONE]</option>`;
-        let htmlDistrict   = `<option value="">[SELECCIONE]</option>`;
+        let htmlDepartment = ``;
+        let htmlProvince   = ``;
+        let htmlDistrict   = ``;
 
         if (r.ubigeo !== null) {
             wrapProvincia.classList.remove('d-none');
             wrapDistrito.classList.remove('d-none');
 
             r.departments.forEach(dep => {
-                htmlDepartment += `<option value="${dep.codigo}"
-                    ${dep.codigo == r.department.codigo ? 'selected' : '' }>
-                    ${dep.departamento}
-                </option>`;
+                let selected = (dep.codigo == r.department.codigo) ? 'selected' : '';
+                htmlDepartment += `<option value="${dep.codigo}" ${selected}>${dep.departamento}</option>`;
             });
 
             r.provinces.forEach(prov => {
-                htmlProvince += `<option value="${prov.codigo}"
-                    ${prov.codigo == r.province.codigo ? 'selected' : '' }>
-                    ${prov.provincia}
-                </option>`;
+                let selected = (prov.codigo == r.province.codigo) ? 'selected' : '';
+                htmlProvince += `<option value="${prov.codigo}" ${selected}>${prov.provincia}</option>`;
             });
 
             r.districts.forEach(dist => {
-                htmlDistrict += `<option value="${dist.codigo}"
-                    ${dist.codigo == r.district.codigo ? 'selected' : '' }>
-                    ${dist.distrito}
-                </option>`;
+                let selected = (dist.codigo == r.district.codigo) ? 'selected' : '';
+                htmlDistrict += `<option value="${dist.codigo}" ${selected}>${dist.distrito}</option>`;
             });
-        }
-        else {
-            // Solo departamentos
+        } else {
+            htmlDepartment = `<option value="">[SELECCIONE]</option>`;
             r.departments.forEach(dep => {
-                htmlDepartment += `<option value="${dep.codigo}">
-                    ${dep.departamento}
-                </option>`;
+                htmlDepartment += `<option value="${dep.codigo}">${dep.departamento}</option>`;
             });
-
             wrapProvincia.classList.add('d-none');
             wrapDistrito.classList.add('d-none');
         }
 
-        // Insert HTML
-        selDepartamento.innerHTML = htmlDepartment;
-        selProvincia.innerHTML   = htmlProvince;
-        selDistrito.innerHTML    = htmlDistrict;
+        // Insertar HTML y re-inicializar
+        $selDepartamento.html(htmlDepartment);
+        $selProvincia.html(htmlProvince);
+        $selDistrito.html(htmlDistrict);
 
-        // Inicializar Choices
-        if (departamentoChoices) departamentoChoices.destroy();
-        departamentoChoices = new Choices(selDepartamento, {
-            placeholder: true,
-            placeholderValue: '[SELECCIONE]',
-            itemSelectText: ''
-        });
-
-        if (provinciaChoices) provinciaChoices.destroy();
-        provinciaChoices = new Choices(selProvincia, {
-            placeholder: true,
-            placeholderValue: '[SELECCIONE]',
-            itemSelectText: ''
-        });
-
-        if (distritoChoices) distritoChoices.destroy();
-        distritoChoices = new Choices(selDistrito, {
-            placeholder: true,
-            placeholderValue: '[SELECCIONE]',
-            itemSelectText: ''
-        });
+        initSelect2();
     })
-    .catch(err => console.error(err));
+    .catch(err => console.error("Error en load_ubigeo:", err));
 }
 
-selDepartamento.addEventListener('change', function() {
-    let value = this.value;
+// Eventos
+$selDepartamento.on('change', function() {
+    let value = $(this).val();
+    if (!value) return;
 
     fetch("{{ route('admin.load_provinces') }}", {
         method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': csrfToken
-        },
+        headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': csrfToken },
         body: JSON.stringify({ codigo: value })
     })
     .then(res => res.json())
     .then(r => {
-        selProvincia.innerHTML = ``;
-        selDistrito.innerHTML  = ``;
-
+        $selProvincia.empty().append('<option value="">[SELECCIONE]</option>');
+        $selDistrito.empty();
+        
         r.provinces.forEach(prov => {
-            selProvincia.innerHTML += `
-                <option value="${prov.codigo}">
-                    ${prov.provincia}
-                </option>`;
+            $selProvincia.append(`<option value="${prov.codigo}">${prov.provincia}</option>`);
         });
 
-        if (provinciaChoices) provinciaChoices.destroy();
-        provinciaChoices = new Choices(selProvincia, {
-            placeholder: true,
-            placeholderValue: '[SELECCIONE]',
-            itemSelectText: ''
-        });
-
-        // Limpia distrito
-        if (distritoChoices) distritoChoices.destroy();
-        distritoChoices = new Choices(selDistrito, {
-            placeholder: true,
-            placeholderValue: '[SELECCIONE]',
-            itemSelectText: ''
-        });
-    })
-    .catch(err => console.log(err))
+        initSelect2();
+    });
 });
 
-selProvincia.addEventListener('change', function() {
-    let value = this.value,
-        codigo_departamento = selDepartamento.value;
-    fetch("{{ route('admin.load_districts') }}", {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': csrfToken
-        },
-        body: JSON.stringify({ codigo: value, codigo_departamento : codigo_departamento })
-    }).then(res => res.json())
-    .then(r => {
-
-    })
-    .catch(err => console.log(err))
-});
-
-document.addEventListener('DOMContentLoaded', function() {
+$(document).ready(function() {
     load_ubigeo();
+
+    
 });
+
+
 </script>

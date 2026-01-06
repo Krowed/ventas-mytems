@@ -163,6 +163,30 @@
                                     value="{{ $business->url_api }}" placeholder="Ingrese la URL de la API">
                             </div>
 
+                            <div class="lg:col-span-12 col-span-1">
+                                <label for="url_api" class="inline-block mb-2 font-medium">URL Api</label>
+                                <input type="text" id="url_api" name="url_api" class="form-input"
+                                    value="{{ $business->url_api }}" placeholder="Ingrese la URL de la API">
+                            </div>
+
+                            <div class="lg:col-span-12 col-span-1">
+                                <label for="url_api" class="inline-block mb-2 font-medium">URL Api</label>
+                                <input type="text" id="url_api" name="url_api" class="form-input"
+                                    value="{{ $business->url_api }}" placeholder="Ingrese la URL de la API">
+                            </div>
+
+                            <div class="lg:col-span-12 col-span-1">
+                                <label for="url_api" class="inline-block mb-2 font-medium">URL Api</label>
+                                <input type="text" id="url_api" name="url_api" class="form-input"
+                                    value="{{ $business->url_api }}" placeholder="Ingrese la URL de la API">
+                            </div>
+
+                            <div class="lg:col-span-12 col-span-1">
+                                <label for="url_api" class="inline-block mb-2 font-medium">URL Api</label>
+                                <input type="text" id="url_api" name="url_api" class="form-input"
+                                    value="{{ $business->url_api }}" placeholder="Ingrese la URL de la API">
+                            </div>
+
                         </div>
                         <div class="flex justify-end mt-6 gap-4">
                             <button type="button" class="btn bg-success text-white btn-save-info flex items-center">

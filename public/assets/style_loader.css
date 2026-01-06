@@ -5,7 +5,6 @@ html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
     overflow-x: hidden;
 }
 
@@ -127,4 +126,131 @@ html[data-theme="light"] .ID-load {
 /* DARK */
 html[data-theme="dark"] .ID-load {
     background-color: oklch(21% .006 285.885);
+}
+
+/* ================================================= */
+/* 1. INTERACTIVIDAD Y ESTRUCTURA (FIXES)            */
+/* ================================================= */
+
+/* Cursor de manito para todo lo interactivo */
+.select2-container--tailwindcss-4 .select2-results__option,
+.select2-container--tailwindcss-4 .select2-selection__clear,
+.select2-container--tailwindcss-4 .select2-selection--single,
+.select2-container--tailwindcss-4 .select2-selection--multiple,
+.select2-container--tailwindcss-4 .select2-selection__choice__remove {
+    cursor: pointer !important;
+}
+
+/* Fix doble scroll */
+.select2-container--tailwindcss-4.select2-container--open .select2-dropdown {
+    max-height: none !important;
+    overflow: hidden !important;
+}
+
+.select2-container--tailwindcss-4 .select2-results__options {
+    max-height: 15rem !important;
+    overflow-y: auto !important;
+}
+
+/* ================================================= */
+/* 2. CONFIGURACIÓN COLOR PRIMARY (oklch(62.3% .214 259.815)) */
+/* ================================================= */
+
+/* Borde y anillo de enfoque (Focus) */
+.select2-container--tailwindcss-4.select2-container--focus .select2-selection--single,
+.select2-container--tailwindcss-4.select2-container--focus .select2-selection--multiple,
+.select2-container--tailwindcss-4 .select2-search--dropdown .select2-search__field:focus {
+    box-shadow: none !important;
+    outline: none !important;
+    border-color: oklch(62.3% .214 259.815) !important;
+    --tw-ring-color: oklch(62.3% .214 259.815) !important;
+}
+
+/* Opciones en el desplegable (Hover o Teclado) */
+.select2-container--tailwindcss-4 .select2-results__option--highlighted[aria-selected],
+.select2-container--tailwindcss-4 .select2-results__option[aria-selected="true"] {
+    background-color: oklch(62.3% .214 259.815) !important;
+    color: #ffffff !important;
+}
+
+/* Icono de Check (✓) */
+.select2-container--tailwindcss-4 .select2-results__option--selected:after {
+    color: oklch(62.3% .214 259.815) !important;
+}
+
+.select2-container--tailwindcss-4 .select2-results__option--highlighted:after {
+    color: #ffffff !important;
+}
+
+/* ================================================= */
+/* COLOR PRIMARY (oklch(62.3% .214 259.815))         */
+/* ================================================= */
+
+/* Focus */
+.select2-container--tailwindcss-4.select2-container--focus .select2-selection--single,
+.select2-container--tailwindcss-4.select2-container--focus .select2-selection--multiple,
+.select2-container--tailwindcss-4 .select2-search--dropdown .select2-search__field:focus {
+    box-shadow: none !important;
+    outline: none !important;
+    border-color: oklch(62.3% .214 259.815) !important;
+    --tw-ring-color: oklch(62.3% .214 259.815) !important;
+}
+
+/* Opciones */
+.select2-container--tailwindcss-4 .select2-results__option--highlighted[aria-selected],
+.select2-container--tailwindcss-4 .select2-results__option[aria-selected="true"] {
+    background-color: oklch(62.3% .214 259.815) !important;
+    color: #ffffff !important;
+}
+
+/* Check */
+.select2-container--tailwindcss-4 .select2-results__option--selected:after {
+    color: oklch(62.3% .214 259.815) !important;
+}
+
+.select2-container--tailwindcss-4 .select2-results__option--highlighted:after {
+    color: #ffffff !important;
+}
+
+/* Cursor y scroll interno */
+.select2-container--tailwindcss-4 .select2-results__option {
+    cursor: pointer !important;
+}
+
+.select2-container--tailwindcss-4 .select2-results__options {
+    max-height: 15rem !important;
+    overflow-y: auto !important;
+}
+
+/* ================================================= */
+/* MODO OSCURO                                      */
+/* ================================================= */
+
+html[data-theme="dark"] .select2-container--tailwindcss-4 .select2-selection--single {
+    background-color: oklch(25% 0.006 285.885) !important;
+    border-color: oklch(35% 0.006 285.885) !important;
+}
+
+html[data-theme="dark"] .select2-container--tailwindcss-4 .select2-selection--single .select2-selection__rendered {
+    color: #f3f4f6 !important;
+}
+
+html[data-theme="dark"] .select2-container--tailwindcss-4 .select2-dropdown {
+    background-color: oklch(21% .006 285.885) !important;
+    border-color: oklch(35% 0.006 285.885) !important;
+}
+
+html[data-theme="dark"] .select2-container--tailwindcss-4 .select2-results__option {
+    color: #e5e7eb !important;
+}
+
+html[data-theme="dark"] .select2-container--tailwindcss-4 .select2-search--dropdown .select2-search__field {
+    background-color: oklch(15% 0.006 285.885) !important;
+    border-color: oklch(35% 0.006 285.885) !important;
+    color: #ffffff !important;
+}
+
+html[data-theme="dark"] .select2-container--tailwindcss-4 .select2-selection__placeholder,
+html[data-theme="dark"] .select2-container--tailwindcss-4 .select2-selection__arrow b {
+    color: #9ca3af !important;
 }
